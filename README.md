@@ -1,4 +1,4 @@
-# Magento
+# Magento->Products Designer Canvas
 magento-1.9.2.1 Open Source <br>
 Name    : Valentin Antonio Bautista<br>
 E-mail  : vale.residencia@gmail.com<br>
