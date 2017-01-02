@@ -1,7 +1,31 @@
+
+
 <?php
 /**
  * Custom tab template
  */
 $productId = Mage::app()->getRequest()->getParam('id');
-echo $productId;
-?>
+        echo $productId;
+        ini_set('display_errors','on');
+        require_once 'app/Mage.php';
+        Mage::app('default');
+        $products = Mage::getModel('catalog/product')->load($productId); //Product ID
+    ?>
+
+
+
+
+<div class="entry-edit">
+
+  <div class="entry-edit-head"> <!-- Titulo del pdc -->
+       <h3 style="color:white;">Personaliza el producto!</h3>
+  </div>
+  <fieldset id="grop_fields">
+       <input type="hidden" name="category_ids" id="product_categories" >
+        <div id="product-categories" class="tree">
+        	<img src="<?php echo Mage::helper('catalog/image')->init($products, 'image')->resize(750,650); ?>">
+        </div>
+   </fieldset>
+</div>
+
+
