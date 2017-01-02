@@ -18,7 +18,7 @@ $this->setTemplate('canvas/catalog/product/tab.phtml');
 */
   public function getTabLabel()
   {
-  return $this->__('Product Canvas Config');
+  return $this->__('Products Designer Canvas');
   }
 
   /**
