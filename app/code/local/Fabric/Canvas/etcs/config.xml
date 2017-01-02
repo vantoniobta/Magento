@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Fabric_Canvas>
+            <version>0.1.0</version>
+        </Fabric_Canvas>
+    </modules>
+    <global>
+        <blocks>
+            <canvas>
+                <class>Fabric_Canvas_Block</class>
+            </canvas>
+        </blocks>
+        <models>
+            <canvas>
+                <class>Fabric_Canvas_Model</class>
+            </canvas>
+        </models>
+    </global>
+    <adminhtml>
+    	<layout>
+    		<updates>
+    			<canvas>
+    				<file>canvas.xml</file>
+    			</canvas>
+    		</updates>
+    	</layout>
+        <events>
+            <catalog_product_save_after>
+                <observers>
+                    <fishpig_save_product_data>
+                        <type>singleton</type>
+                        <class>canvas/observer</class>
+                        <method>saveProductTabData</method>
+                    </fishpig_save_product_data>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </adminhtml>
+</config>

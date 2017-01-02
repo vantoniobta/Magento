@@ -113,6 +113,11 @@
                 </config>
             </children>
         </system>
+<!--     <canvas_admin_pdc_admin> 
+      <title>Products Designer</title>
+          <sort_order>10</sort_order>
+     <action>canvas_admin_pdc_admin/canvasadmin</action>
+  </canvas_admin_pdc_admin> -->
     </menu>
     <acl>
         <resources>
