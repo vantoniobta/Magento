@@ -1190,8 +1190,8 @@ var ProductMediaManager = {
                 image.parents('.product-image').addClass('zoom-available');
             }
         }
-
-        image.elevateZoom();
+         //quitar zoom del producto en el catalogo
+        //image.elevateZoom();
     },
 
     swapImage: function(targetImage) {
