@@ -12,17 +12,22 @@ $productId = Mage::app()->getRequest()->getParam('id');
         $products = Mage::getModel('catalog/product')->load($productId); //Product ID
     ?>
 
-
-
-
 <div class="entry-edit">
-
   <div class="entry-edit-head"> <!-- Titulo del pdc -->
        <h3 style="color:white;">Personaliza el producto!</h3>
   </div>
   <fieldset id="grop_fields">
        <input type="hidden" name="category_ids" id="product_categories" >
         <div id="product-categories" class="tree">
+
+         <!-- DIV HERRAMIENTAS DE PDC -->
+          <div class="fieldset fieldset-wide" style="background-color:#E5E5E5">  
+           <h6 style="color:#e38c2d;">Texto:</h6> <input type="text" name="texto">
+           <button class="#" id="#" onclick="return false">Insertar</button>
+
+
+          </div>
+          <!-- DIV HERRAMIENTAS DE PDC -->
         	<img src="<?php echo Mage::helper('catalog/image')->init($products, 'image')->resize(750,650); ?>">
         </div>
    </fieldset>
