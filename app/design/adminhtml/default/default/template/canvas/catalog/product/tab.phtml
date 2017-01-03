@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.5/fabric.min.js"></script>
+<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>jQuery.noConflict()</script>
+
+
 
 
 <?php
@@ -10,7 +15,24 @@ $productId = Mage::app()->getRequest()->getParam('id');
         require_once 'app/Mage.php';
         Mage::app('default');
         $products = Mage::getModel('catalog/product')->load($productId); //Product ID
-    ?>
+?>
+
+<style type="text/css">
+  #img_def{
+    display:none;
+  }
+  #herramientas{
+    background-color:#E5E5E5; position: absolute; width: 300px; height: 140px; top: 300px; left: 850px; 
+  }
+  #xcanvas{
+    border:1px solid #d3d3d3;
+  }
+</style>
+
+<div id="img_def">  <!-- imagen de fondo -->
+  <img id="img_default" src="<?php echo Mage::helper('catalog/image')->init($products, 'image')->resize(750,650); ?>"> 
+</div>
+
 
 <div class="entry-edit">
   <div class="entry-edit-head"> <!-- Titulo del pdc -->
@@ -19,18 +41,52 @@ $productId = Mage::app()->getRequest()->getParam('id');
   <fieldset id="grop_fields">
        <input type="hidden" name="category_ids" id="product_categories" >
         <div id="product-categories" class="tree">
-
-         <!-- DIV HERRAMIENTAS DE PDC -->
-          <div class="fieldset fieldset-wide" style="background-color:#E5E5E5">  
-           <h6 style="color:#e38c2d;">Texto:</h6> <input type="text" name="texto">
-           <button class="#" id="#" onclick="return false">Insertar</button>
-
-
-          </div>
-          <!-- DIV HERRAMIENTAS DE PDC -->
-        	<img src="<?php echo Mage::helper('catalog/image')->init($products, 'image')->resize(750,650); ?>">
+           <!-- DIV HERRAMIENTAS DE PDC -->
+            <div id="herramientas" class="fieldset fieldset-wide">
+            <div class="entry-edit-head"> <!-- Titulo del pdc -->
+                 <h4 style="color:white;" align="center">Herramientas:</h4>
+            </div><br>
+            <hr>
+               <h6 style="color:#e38c2d;">Texto:</h6> <input type="text" name="texto">
+               <button class="#" id="#" onclick="return false">Insertar</button><br><br>
+               <h6 style="color:#e38c2d;">Color:</h6>
+                  <select id="color">
+                      <option value="">Select...</option>
+                      <option value="#E00000">Rojo</option>
+                      <option value="#3CB371">Verde</option>
+                      <option value="#808080">Gris</option>
+                      <option value="#87CEFA">Azul</option>
+                      <option value="#FF9900">Naranja</option>
+                  </select>
+            </div>
+            <!-- DIV HERRAMIENTAS DE PDC -->
+              <!-- div canvas-->
+              <div>
+                  <canvas id="xcanvas" width="500" height="550"></canvas>
+              </div>
+              <!-- div canvas-->
+        	 
         </div>
    </fieldset>
 </div>
+
+<script type="text/javascript">
+       var canvas = new fabric.Canvas('xcanvas');
+       fabric.Image.fromURL('https://s5.postimg.org/mcnyutofb/mens_longsleeve_front.png',function(oImg){
+            oImg.scale(0.9).setFlipX(true);//tmñ
+            oImg.left=0;//posicion de imagen
+            oImg.top=0;
+            // oImg.selectable=false;
+            canvas.add(oImg);
+        })
+
+        canvas.backgroundColor = '#DEB887';
+        canvas.renderAll();
+        $('select#color').on('change', function() {
+          canvas.backgroundColor = this.value;
+            canvas.renderAll();
+        });
+
+</script>
 
 
